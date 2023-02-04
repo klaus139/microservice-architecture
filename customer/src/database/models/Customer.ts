@@ -1,6 +1,6 @@
 import mongoose, {Schema} from 'mongoose';
 
-interface Icustomer {
+export interface Icustomer {
     email: string;
     password: string;
     salt: string;
