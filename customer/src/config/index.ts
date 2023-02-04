@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+//dotenv.config();
 
 if(process.env.NODE_ENV !== 'prod') {
   const configFIle = `.env.${process.env.NODE_ENV}`;
