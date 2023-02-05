@@ -16,4 +16,10 @@ export class CustomerRepositiory {
       throw err;
     }
   }
+
+  async FindCustomer({email}:{email:string}){
+    const existingCustomer = await CustomerModel.findOne({email});
+    return existingCustomer;
+
+  }
 }

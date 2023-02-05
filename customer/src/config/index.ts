@@ -12,3 +12,5 @@ if(process.env.NODE_ENV !== 'prod') {
 export const PORT = process.env.PORT as string;
 
 export const DB_URL = process.env.DB_URL as string;
+
+export const APP_SECRET = process.env.APP_SECRET as string;
