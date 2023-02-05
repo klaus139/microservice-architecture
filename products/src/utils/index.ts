@@ -24,5 +24,6 @@ export async function FormatData(data: unknown){
     throw new Error('No data found');
 }
 
-
-
+export async function ValidateSignature(){
+    return verify();
+}

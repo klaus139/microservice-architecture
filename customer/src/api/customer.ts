@@ -8,9 +8,9 @@ export const Customer = (app:express.Application) => {
         try{
             const {email, password, phone} = req.body;
             //do your validation with joi here.........
-            //i didnt here but you should when you do yours
-            const {data} = await service.SignUp({email, password, phone});
-            res.status(201).json(data);
+            //i didnt here but you should when you
+            const data = await service.SignUp({email, password, phone});
+            return res.status(201).json(data);
 
         }catch(err){
             next(err);

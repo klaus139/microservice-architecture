@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import logger from 'morgan';
-import { Customer } from './api';
+import { Product } from './api';
 
 export const expressApp = async(app: express.Application) => {
 
@@ -10,6 +10,6 @@ export const expressApp = async(app: express.Application) => {
     app.use(logger('dev'));
 
     //api 
-    Customer(app);
+    Product(app);
 
 }
