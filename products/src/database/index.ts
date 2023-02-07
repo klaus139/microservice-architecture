@@ -1,2 +1,2 @@
-export * from './connection';
-export * from './repository/productRepository';
+export * from "./connection"
+export * from "./repository/productRepository"

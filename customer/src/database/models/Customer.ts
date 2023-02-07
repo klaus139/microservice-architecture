@@ -1,25 +1,39 @@
-import mongoose, {Schema} from 'mongoose';
+import mongoose, { Schema } from "mongoose"
 
-export interface Icustomer {
-    email: string;
-    password: string;
-    salt: string;
-    phone: string;
+export interface ICustomer{
+    email:string
+    password:string
+    salt:string
+    phone:string
+    cart:Array<object>
 }
-const customerSchema = new Schema({
-    email: String,
-    password: String,
-    salt: String,
-    phone: String,
-    
+
+const CustomerSchema = new Schema({
+email:String,
+password:String,
+salt: String,
+phone:String,
+cart:[
+    {
+        product:{
+            _id:{type:String, require:true},
+            name:{type:String},
+            banner:{type:String},
+            price:{type:Number},
+            
+        },
+        unit:{type:Number, require:true}
+    }
+]
 }, {
+    // MORE LIKE ATTRIBUTES IN SQL. ON RESPONSE, IT WOULF HIDE THE SALT AND PASSWORD
     toJSON: {
         transform(doc, ret){
-            delete ret.password;
-            delete ret.salt;
+            delete ret.password
+            delete ret.salt
         }
     },
-    timestamps: true
+    timestamps:true
 })
 
-export const CustomerModel = mongoose.model<Icustomer>('customer', customerSchema)
+export const CustomerModel = mongoose.model<ICustomer>("customer", CustomerSchema)

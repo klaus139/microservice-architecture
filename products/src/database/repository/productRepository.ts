@@ -1,36 +1,36 @@
-import { ProductModel, IProduct } from "../models";
+// REPOSITORY COMMUNNICATE WITH THE DATABASE
 
-export class ProductRepositiory {
-  async CreateProduct({ name,
-    desc,
-    banner,
-    type,
-    unit,
-    price,
-    avaialble,
-    supplier}: IProduct) {
-    try {
-      const product = new ProductModel({
-        name,
-    desc,
-    banner,
-    type,
-    unit,
-    price,
-    avaialble,
-    supplier
-      });
+import {ProductModel, IProduct} from "../models"
 
-      const productResult = product.save();
-      return productResult;
-    } catch (err) {
-      throw err;
+// THIS IS NOT REQ.BODY, IT IS JUST LIKE A PAYLOAD TO 
+// WHAT IS EXPECTED TO BE SAVED TO THE DATABASE ON CREATE ACCOUNT
+export class ProductRepository{
+    async CreateProduct({ name,
+        desc,
+        banner,
+        type,
+        unit,
+        price,
+        available,
+        suplier,}: IProduct){
+        try {
+            const product = await ProductModel.create({
+                name,
+                desc,
+                banner,
+                type,
+                unit,
+                price,
+                available,
+                suplier,
+            })
+            return product
+        } catch (err) {
+            console.log(err)
+        }
     }
-  }
-
-  async FindCustomer({email}:{email:string}){
-    const existingCustomer = await ProductModel.findOne({email});
-    return existingCustomer;
-
-  }
+    // async FindCustomer(email:string){
+    //     const customer = await CustomerModel.findOne({email})
+    //     return customer
+    // }
 }
